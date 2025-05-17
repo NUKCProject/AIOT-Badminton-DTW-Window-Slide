@@ -3,6 +3,7 @@ import axios from 'axios'
 // 這邊設定你的後端BaseURL
 const apiClient = axios.create({
   baseURL: 'https://badminton-457613.de.r.appspot.com',
+  // baseURL: 'http://127.0.0.1:8000',
   timeout: 10000,
 })
 
@@ -17,4 +18,17 @@ export const fetchReferenceWindows = async (action_type, device_id) => {
   return response.data
 }
 
-// 之後可以繼續加更多API，比如 insert-reference 等等
+// 抓大段waveform
+export const insertReference = async (data) => {
+  const response = await apiClient.post('/insert-reference', data)
+  return response.data
+}
+
+export const fetchReferenceWaveforms = async (action_type) => {
+  const response = await apiClient.get('/reference-waveforms', {
+    params: {
+      action_type
+    }
+  })
+  return response.data
+}
