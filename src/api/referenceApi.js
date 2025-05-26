@@ -2,9 +2,9 @@ import axios from 'axios'
 
 // 這邊設定你的後端BaseURL
 const apiClient = axios.create({
-  // baseURL: 'https://badminton-457613.de.r.appspot.com',
-  baseURL: 'http://127.0.0.1:8000',
-  timeout: 60000,
+  baseURL: 'https://badminton-461016.de.r.appspot.com',
+  // baseURL: 'http://127.0.0.1:8000',
+  timeout: 600000,
 })
 
 // 抓小段waveform
