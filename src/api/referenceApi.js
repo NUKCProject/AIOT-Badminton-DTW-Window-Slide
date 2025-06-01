@@ -64,3 +64,13 @@ export const fetchAutoLabel = async (action, device_id) => {
   })
   return response.data
 }
+
+export const fetchAutoLabelPeaks = async (action, device_id) => {
+  const response = await apiClient.post('/auto-label-peaks', null, {
+    params: {
+      action: action,
+      device_id: device_id
+    }
+  })
+  return response.data
+}

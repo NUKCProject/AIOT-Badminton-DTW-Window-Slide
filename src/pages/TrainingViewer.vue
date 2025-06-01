@@ -24,7 +24,7 @@ const loadTrainingWaveforms = async () => {
 }
 
 // 一進來就先自動載一次
-loadTrainingWaveforms()
+// loadTrainingWaveforms()
 </script>
 
 <template>

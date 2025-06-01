@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { fetchTrainingRawWaveforms, fetchAutoLabel } from '@/api/referenceApi'
+import { fetchTrainingRawWaveforms, fetchAutoLabel, fetchAutoLabelPeaks } from '@/api/referenceApi'
 import WaveformCard from '@/components/WaveformCard.vue'
 
 // 可選的動作清單（你可以自己加）
@@ -35,6 +35,16 @@ const autoLabel = async () => {
     }
 }
 
+const autoLabelPeaks = async () => {
+    try {
+        const data = await fetchAutoLabelPeaks(actionType.value, deviceId.value, true)
+        console.log('高峰標記資料', data)
+        
+    } catch (error) {
+        console.error('高峰標記資料失敗', error)
+    }
+}
+
 // 一進來就先自動載一次
 loadTrainingWindows()
 </script>
@@ -54,6 +64,7 @@ loadTrainingWindows()
 
             <button @click="loadTrainingWindows">載入資料</button>
             <button @click="autoLabel">自動標記</button>
+            <button @click="autoLabelPeaks">高峰標記法</button>
         </div>
 
         <div v-if="windows.length === 0">
