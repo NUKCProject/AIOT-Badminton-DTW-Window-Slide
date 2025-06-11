@@ -7,7 +7,7 @@ const apiClient = axios.create({
   timeout: 600000,
 })
 
-// 抓小段waveform
+/// Fetch reference waveforms
 export const fetchReferenceWindows = async (action, device_id) => {
   const response = await apiClient.get('/extract-reference', {
     params: {
@@ -18,13 +18,13 @@ export const fetchReferenceWindows = async (action, device_id) => {
   return response.data
 }
 
-// 抓大段waveform
+// Fetch training waveforms
 export const insertReference = async (data) => {
   const response = await apiClient.post('/insert-reference', data)
   return response.data
 }
 
-// 抓代表waveform
+// Fetch training waveforms
 export const fetchReferenceWaveforms = async (action) => {
   const response = await apiClient.get('/reference-waveforms', {
     params: {
@@ -34,6 +34,7 @@ export const fetchReferenceWaveforms = async (action) => {
   return response.data
 }
 
+// Fetch training waveforms
 export const fetchTrainingWaveforms = async (action) => {
   const response = await apiClient.get('/training-waveforms', {
     params: {
@@ -43,7 +44,7 @@ export const fetchTrainingWaveforms = async (action) => {
   return response.data
 }
 
-// 抓小段training raw waveform
+// Fetch training raw waveforms
 export const fetchTrainingRawWaveforms = async (action, device_id) => {
   const response = await apiClient.get('/extract-training', {
     params: {
@@ -54,7 +55,7 @@ export const fetchTrainingRawWaveforms = async (action, device_id) => {
   return response.data
 }
 
-// 自動標記Training Raw Waveform
+// Fetch training raw waveforms
 export const fetchAutoLabel = async (action, device_id) => {
   const response = await apiClient.post('/auto-label', null, {
     params: {
@@ -65,6 +66,7 @@ export const fetchAutoLabel = async (action, device_id) => {
   return response.data
 }
 
+// Fetch auto label peaks
 export const fetchAutoLabelPeaks = async (action, device_id) => {
   const response = await apiClient.post('/auto-label-peaks', null, {
     params: {

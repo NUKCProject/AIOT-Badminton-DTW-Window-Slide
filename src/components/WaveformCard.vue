@@ -14,6 +14,7 @@ import { computed } from 'vue'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale)
 
+// This component displays a waveform card with three charts: acceleration, gyroscope, and magnitude of acceleration.
 const props = defineProps({
   waveform: {
     type: Array,
@@ -33,10 +34,11 @@ const gx = computed(() => props.waveform.map(p => p.gx))
 const gy = computed(() => props.waveform.map(p => p.gy))
 const gz = computed(() => props.waveform.map(p => p.gz))
 
+// Calculate the magnitude of the acceleration
 const magnitude = computed(() => 
   props.waveform.map(p => Math.sqrt(p.ax ** 2 + p.ay ** 2 + p.az ** 2))
 )
-
+// Define the data for each chart using computed properties
 const accData = computed(() => ({
   labels: timestamps.value,
   datasets: [
@@ -45,7 +47,7 @@ const accData = computed(() => ({
     { label: 'az', data: az.value, borderColor: 'green', fill: false }
   ]
 }))
-
+// Define the gyroscope data
 const gyrData = computed(() => ({
   labels: timestamps.value,
   datasets: [
@@ -54,14 +56,14 @@ const gyrData = computed(() => ({
     { label: 'gz', data: gz.value, borderColor: 'cyan', fill: false }
   ]
 }))
-
+// Define the magnitude data
 const magnitudeData = computed(() => ({
   labels: timestamps.value,
   datasets: [
     { label: 'Magnitude', data: magnitude.value, borderColor: 'black', fill: false }
   ]
 }))
-
+// Chart options for all charts
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -81,7 +83,6 @@ const chartOptions = {
   }
 }
 </script>
-
 <template>
   <div class="waveform-card">
     <h3>小段 #{{ index }}</h3>

@@ -25,6 +25,7 @@ const loadTrainingWindows = async () => {
     }
 }
 
+// 自動標記資料
 const autoLabel = async () => {
     try {
         const data = await fetchAutoLabel(actionType.value, deviceId.value)
@@ -35,6 +36,7 @@ const autoLabel = async () => {
     }
 }
 
+// 高峰標記法
 const autoLabelPeaks = async () => {
     try {
         const data = await fetchAutoLabelPeaks(actionType.value, deviceId.value, true)

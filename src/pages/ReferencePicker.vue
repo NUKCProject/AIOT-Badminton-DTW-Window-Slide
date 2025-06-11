@@ -18,15 +18,15 @@ function handleCheck(window) {
 }
 
 const confirmDialog = ref(null);
-
+// 當選擇的資料改變時，檢查是否有勾選
 function openConfirmDialog() {
     confirmDialog.value?.showModal();
 }
-
+// 當選擇的資料改變時，檢查是否有勾選
 function closeConfirmDialog() {
     confirmDialog.value?.close();
 }
-
+// 提交資料
 async function submitData() {
     let successCount = 0;
     let failCount = 0;
